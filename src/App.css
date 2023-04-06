@@ -1,5 +1,6 @@
 body {
     background: var(--gray-600);
+    box-sizing: border-box;
 }
 
 header {
@@ -28,6 +29,8 @@ header {
     border-radius: 8px;
     border: none;
     font-size: 1rem;
+
+    text-align: center;
 }
 
 .form button {
@@ -56,11 +59,6 @@ header {
     background: var(--blue);
 }
 
-.todoStats{
-    display: flex;
-    justify-content: space-between;
-}
-
 .tasksContainer {
     display: flex;
     justify-content: center;
@@ -74,7 +72,24 @@ header {
     width: 46rem;
 }
 
+.headerCab {
+    display: flex;
+    justify-content: center;
+}
+
 .todoStats {
+    margin-top: 4rem;
     display: flex;
     justify-content: space-between;
+    width: 46rem;
+}
+
+.todoStatsCriadas {
+    font-weight: bold;
+    color: var(--blue);
+}
+
+.todoStatsConc  {
+    font-weight: bold;
+    color: var(--purple);
 }

@@ -39,10 +39,12 @@ function App() {
             />
             <button type='button' onClick={handleNewTask}> Criar <img src={plus}/> </button>
         </div>
-        <div className="todoStats">
-              <p> Tarefas Criadas </p>
-              <p> Concluídas  </p>
-            </div>
+        <div className='headerCab'>
+          <div className="todoStats">
+              <p className='todoStatsCriadas'> Tarefas criadas: {tasks.length} </p>
+              <p className='todoStatsConc'> Concluídas  </p>
+          </div>
+        </div>
         <div className="tasksContainer">
           <div className="tasks">
             {tasks.map(task => (

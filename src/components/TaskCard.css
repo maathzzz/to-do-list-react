@@ -10,6 +10,7 @@
     margin-bottom: 20px;
   
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -21,7 +22,6 @@
 }
   
 .card p {
-    font-size: 18px;
     margin-left: 1rem;
 }
 
@@ -30,11 +30,13 @@
     border: none;
     cursor: pointer;
     margin-right: 1rem;
-    align-items: end;
 }
 
-.card button img{
+.card button img {
     width: 2rem;
     height: 2rem;
-    justify-content: end;
+}
+
+.elementoum {
+    flex-direction: row;
 }
