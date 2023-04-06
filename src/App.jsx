@@ -5,62 +5,69 @@ import plus from './assets/plus.svg'
 
 import './global.css'
 import './App.css'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
-  const [ newTask, setNewTask ] = useState('');
-  const [ tasks, setTasks ] = useState([]);
+  const [newTask, setNewTask] = useState('')
+  const [tasks, setTasks] = useState(() => {
+    const storedTasks = localStorage.getItem('tasks')
+    return storedTasks ? JSON.parse(storedTasks) : []
+  })
 
-  function handleNewTask(){
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
 
+  function handleNewTask() {
     const newId = Math.floor(Math.random() * 100000000000)
-
     const task = {
       id: newId,
       content: newTask,
       isFinished: false,
-    };
-
-    setTasks(prevState => [...prevState, task]);
-    setNewTask('');
+    }
+    setTasks(prevState => [...prevState, task])
+    setNewTask('')
   }
 
   return (
     <div className="App">
-        <header> 
-          <img src={todoLogo} />
-        </header>
-        <div className="form">
-            <input 
-              placeholder='Adicione uma nova tarefa'
-              onChange={e => setNewTask(e.target.value)}
-              value={newTask}
+      <header>
+        <img src={todoLogo} />
+      </header>
+      <div className="form">
+        <input
+          placeholder="Adicione uma nova tarefa"
+          onChange={e => setNewTask(e.target.value)}
+          value={newTask}
+        />
+        <button type="button" onClick={handleNewTask}>
+          Criar <img src={plus} />
+        </button>
+      </div>
+      <div className="headerCab">
+        <div className="todoStats">
+          <p className="todoStatsCriadas"> Tarefas criadas: {tasks.length} </p>
+          <p className="todoStatsConc"> Concluídas </p>
+        </div>
+      </div>
+      <div className="tasksContainer">
+        <div className="tasks">
+          {tasks.map(task => (
+            <TaskCard
+              key={task.id}
+              content={task.content}
+              isFinished={task.isFinished}
+              onDelete={() =>
+                setTasks(prevState =>
+                  prevState.filter(t => t.id !== task.id)
+                )
+              }
             />
-            <button type='button' onClick={handleNewTask}> Criar <img src={plus}/> </button>
+          ))}
         </div>
-        <div className='headerCab'>
-          <div className="todoStats">
-              <p className='todoStatsCriadas'> Tarefas criadas: {tasks.length} </p>
-              <p className='todoStatsConc'> Concluídas  </p>
-          </div>
-        </div>
-        <div className="tasksContainer">
-          <div className="tasks">
-            {tasks.map(task => (
-              <TaskCard 
-                key={task.id}
-                content={task.content}
-                isFinished={task.isFinished} 
-                onDelete={() => setTasks(prevState => prevState.filter(t => t.id !== task.id))}
-                onKeyPress={(event) =>{
-                  event.key === "Enter" && sendMessage();
-                }}
-              />
-            ))}
-          </div>
-        </div>  
+      </div>
     </div>
   )
 }
+
 export default App
