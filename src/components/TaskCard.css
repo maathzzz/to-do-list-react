@@ -1,0 +1,40 @@
+.card {
+    width: 100%;
+    height: 4.5rem;
+
+    background: var(--gray-400);
+    color: var(--gray-200);;
+  
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  
+    display: flex;
+    align-items: center;
+}
+
+.card input {
+    margin-left: 1rem;
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+}
+  
+.card p {
+    font-size: 18px;
+    margin-left: 1rem;
+}
+
+.card button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 1rem;
+    align-items: end;
+}
+
+.card button img{
+    width: 2rem;
+    height: 2rem;
+    justify-content: end;
+}

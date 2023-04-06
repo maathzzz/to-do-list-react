@@ -1,5 +1,80 @@
+body {
+    background: var(--gray-600);
+}
+
 header {
     width: 100%;
-    height: 10rem;
-    background: red;
+    height: 12rem;
+    background: var(--gray-700);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: -1.688rem;
+}
+
+.form input {
+    width: 39.875rem;
+    height: 3.375rem;
+
+    background: var(--gray-400);
+    color: var(--gray-100);
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+}
+
+.form button {
+    width: 5.625rem;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+
+    background: var(--bluedark);
+    color: var(--white);
+
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+.form button img {
+    margin-left: 0.5rem;
+}
+
+.form button:hover{
+    background: var(--blue);
+}
+
+.todoStats{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tasksContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.tasks {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 46rem;
+}
+
+.todoStats {
+    display: flex;
+    justify-content: space-between;
 }
