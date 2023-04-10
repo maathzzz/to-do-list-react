@@ -9,7 +9,9 @@ import { useState, useEffect } from 'react'
 
 function App() {
   const [newTask, setNewTask] = useState('')
+  
   const [countTask, setCountTask] = useState()
+
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem('tasks')
     return storedTasks ? JSON.parse(storedTasks) : []
@@ -35,6 +37,10 @@ function App() {
     setNewTask('')
   }
 
+  let taskCompleteCount = tasks.filter(function (task) {
+    return task.isFinished;
+  }).length;
+
   return (
     <div className="App">
       <header>
@@ -47,7 +53,7 @@ function App() {
           onChange={e => setNewTask(e.target.value)}
           value={newTask}
           onKeyPress={e => {
-            if (target.value > 0) {
+            if (0) {
               if (e.key === 'Enter') {
                 handleNewTask()
               }
@@ -76,6 +82,7 @@ function App() {
               key={task.id}
               content={task.content}
               countTask={countTask}
+              setCountTask={setCountTask}
               isFinished={task.isFinished}
               onDelete={() =>
                 setTasks(prevState =>

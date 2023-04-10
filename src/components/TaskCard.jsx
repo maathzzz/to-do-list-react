@@ -2,7 +2,7 @@ import trash from '../assets/trash.svg';
 import React, { useState } from 'react';
 import './TaskCard.css';
 
-export function TaskCard({ content, onDelete, isFinished, countTask }) {
+export function TaskCard({ content, onDelete, isFinished, countTask, setCountTask }) {
   const [isFinishedTask, setIsFinishedTask] = useState(false);
 
   const handleCheckboxChange = (event) => {
@@ -10,13 +10,11 @@ export function TaskCard({ content, onDelete, isFinished, countTask }) {
     console.log(event.target.checked)
 
     if(isFinishedTask == false) {
-      // console.log("concluído")
       isFinished = true;
-
+      setCountTask(countTask + 1)
     } else {
-      // console.log("pendente")
-      countTask = countTask - 1;
       isFinished = false;
+      setCountTask(countTask - 1)
     }
   };
   
