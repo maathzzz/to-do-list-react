@@ -24,6 +24,7 @@ function App() {
   }, [tasks])
 
   function handleNewTask() {
+    event.preventDefault()
     const newId = Math.floor(Math.random() * 100000000000)
     const task = {
       id: newId,
@@ -39,21 +40,25 @@ function App() {
       <header>
         <img src={todoLogo} />
       </header>
-      <div className="form">
+      <form onSubmit={handleNewTask} className="form">
         <input
+          required={true}
           placeholder="Adicione uma nova tarefa"
           onChange={e => setNewTask(e.target.value)}
           value={newTask}
           onKeyPress={e => {
-            if (e.key === 'Enter') {
-              handleNewTask()
+            if (target.value > 0) {
+              if (e.key === 'Enter') {
+                handleNewTask()
+              }
+            } else {
             }
           }}
         />
-        <button type="button" onClick={handleNewTask}>
+        <button type="submit">
           Criar <img src={plus} />
         </button>
-      </div>
+      </form>
       <div className="headerCab">
         <div className="todoStats">
           <p className="todoStatsCriadas"> Tarefas criadas: {tasks.length} </p>
