@@ -30,7 +30,7 @@ function App() {
       content: newTask,
       isFinished: false,
     }
-    setTasks(prevState => [...prevState, task])
+    setTasks(prevState => [task, ...prevState])
     setNewTask('')
   }
 
@@ -52,7 +52,7 @@ function App() {
       <div className="headerCab">
         <div className="todoStats">
           <p className="todoStatsCriadas"> Tarefas criadas: {tasks.length} </p>
-          <p className="todoStatsConc"> Concluídas: {countTask} </p>
+          <p className="todoStatsConc"> Concluídas: {countTask} de {tasks.length} </p>
         </div>
       </div>
       <div className="tasksContainer">
