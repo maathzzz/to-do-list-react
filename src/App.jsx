@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 
 function App() {
   const [newTask, setNewTask] = useState('')
+  const [countTask, setCountTask] = useState()
   const [tasks, setTasks] = useState(() => {
     const storedTasks = localStorage.getItem('tasks')
     return storedTasks ? JSON.parse(storedTasks) : []
@@ -16,6 +17,10 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
+
+    // Filtrar tarefas concluídas e atualizar a variável countTask
+    const finishedTasks = tasks.filter(task => task.isFinished == true)
+    setCountTask(finishedTasks.length)
   }, [tasks])
 
   function handleNewTask() {
@@ -47,7 +52,7 @@ function App() {
       <div className="headerCab">
         <div className="todoStats">
           <p className="todoStatsCriadas"> Tarefas criadas: {tasks.length} </p>
-          <p className="todoStatsConc"> Concluídas </p>
+          <p className="todoStatsConc"> Concluídas: {countTask} </p>
         </div>
       </div>
       <div className="tasksContainer">
@@ -56,6 +61,7 @@ function App() {
             <TaskCard
               key={task.id}
               content={task.content}
+              countTask={countTask}
               isFinished={task.isFinished}
               onDelete={() =>
                 setTasks(prevState =>
