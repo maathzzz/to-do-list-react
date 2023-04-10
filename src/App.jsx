@@ -44,6 +44,11 @@ function App() {
           placeholder="Adicione uma nova tarefa"
           onChange={e => setNewTask(e.target.value)}
           value={newTask}
+          onKeyPress={e => {
+            if (e.key === 'Enter') {
+              handleNewTask()
+            }
+          }}
         />
         <button type="button" onClick={handleNewTask}>
           Criar <img src={plus} />
@@ -55,7 +60,11 @@ function App() {
           <p className="todoStatsConc"> Concluídas: {countTask} de {tasks.length} </p>
         </div>
       </div>
+      <div className='aa'>
+        <div className="hr"></div>
+      </div>
       <div className="tasksContainer">
+      {tasks.length > 0 ? (
         <div className="tasks">
           {tasks.map(task => (
             <TaskCard
@@ -71,6 +80,15 @@ function App() {
             />
           ))}
         </div>
+        ) : (
+          <div className="todoNoTasks">
+            <div> 
+              <img src={clipboard}></img>
+            </div>
+            <strong> Você ainda não tem tarefas cadastradas </strong>
+            <small> Crie tarefas e organize seus itens a fazer </small>
+          </div>
+        )}
       </div>
     </div>
   )

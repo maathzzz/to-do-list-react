@@ -59,6 +59,19 @@ header {
     background: var(--blue);
 }
 
+.aa {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.hr {
+    width: 46rem;
+    height: 0.1rem;
+    border-radius: 8px;
+    background: var(--gray-400);
+}
+
 .tasksContainer {
     display: flex;
     justify-content: center;
@@ -92,4 +105,27 @@ header {
 .todoStatsConc  {
     font-weight: bold;
     color: var(--purple);
+}
+
+.todoNoTasks {
+    margin-top: 3rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-300);
+}
+
+.todoNoTasks div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.todoNoTasks strong {
+    display: flex;
+    justify-content: center;
+}
+
+.todoNoTasks small {
+    display: flex;
+    justify-content: center;
 }
