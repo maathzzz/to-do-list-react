@@ -37,10 +37,6 @@ function App() {
     setNewTask('')
   }
 
-  let taskCompleteCount = tasks.filter(function (task) {
-    return task.isFinished;
-  }).length;
-
   return (
     <div className="App">
       <header>

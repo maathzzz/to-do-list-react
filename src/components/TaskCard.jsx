@@ -11,10 +11,12 @@ export function TaskCard({ content, onDelete, isFinished, countTask, setCountTas
 
     if(isFinishedTask == false) {
       isFinished = true;
-      setCountTask(countTask + 1)
+      countTask = countTask + 1
+      setCountTask(countTask)
     } else {
       isFinished = false;
-      setCountTask(countTask - 1)
+      countTask = countTask - 1
+      setCountTask(countTask)
     }
   };
   
